@@ -1,7 +1,10 @@
 ﻿
 namespace AngularJSTest.Helpers
 {
+    using System.Linq;
+
     using AngularJSTest.Core;
+    using AngularJSTest.Models;
     using AngularJSTest.Service;
 
     /// <summary>
@@ -40,6 +43,31 @@ namespace AngularJSTest.Helpers
         public string GetPageUrl()
         {
             return this.App.Pages.Driver.Url;
+        }
+
+        /// <summary>
+        /// The add new to do item.
+        /// </summary>
+        /// <param name="itemName">
+        /// The item name.
+        /// </param>
+        public void AddNewToDoItem(string itemName)
+        {
+            App.Pages.HomePage.ToDosWidget.AddNewToDoItem(itemName);
+        }
+
+        /// <summary>
+        /// The get to do item.
+        /// </summary>
+        /// <param name="itemName">
+        /// The item name.
+        /// </param>
+        /// <returns>
+        /// The <see cref="ToDo"/>.
+        /// </returns>
+        public ToDo GetToDoItem(string itemName)
+        {
+            return App.Pages.HomePage.ToDosWidget.GetToDos().First(e => e.Name.Equals(itemName));
         }
     }
 }

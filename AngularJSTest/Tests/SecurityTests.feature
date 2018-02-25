@@ -1,7 +1,12 @@
 ﻿Feature: SecurityTests
-	
-Scenario: Add two numbers
-	Given I have entered 50 into the calculator
-	And I have entered 70 into the calculator
-	When I press add
-	Then the result should be 120 on the screen
+
+@security	
+Scenario Outline: Check XSS
+	When I add new to do item <item>
+	Then I shouldn't see alert
+	And I see item <item> is created
+
+Examples:
+| item																		|
+| <script>alert('test1')</script>										    |
+| <img src='/img/javascript:alert()' onerror='javascrip:alert().jpg'>       |

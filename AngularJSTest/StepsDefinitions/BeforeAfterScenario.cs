@@ -4,6 +4,7 @@ namespace AngularJSTest.Tests
     using System;
     using System.Collections.Specialized;
     using System.Configuration;
+    using System.Linq.Expressions;
     using System.Threading;
 
     using AngularJSTest.Core;
@@ -41,7 +42,7 @@ namespace AngularJSTest.Tests
         }
 
         /// <summary>
-        /// The before scenario fixture.
+        /// The after scenario fixture.
         /// </summary>
         [AfterScenario]
         public static void After()
@@ -54,7 +55,25 @@ namespace AngularJSTest.Tests
             App.Logger.Info("Test scenario finished - " + ScenarioContext.Current.ScenarioInfo.Title);
             App.Pages.NavigateToBaseUrl();
         }
-        
+
+        /// <summary>
+        /// The after scenario fixture for security tests.
+        /// </summary>
+        [AfterScenario("security")]
+        public static void AfterSecurity()
+        {
+            try
+            {
+                App.Pages.Driver.SwitchTo().Alert().Accept();
+            }
+            catch (NoAlertPresentException e)
+            {
+                // supress exception
+            }
+
+            App.Pages.NavigateToBaseUrl();
+        }
+
 
         /// <summary>
         /// The after test fixture.

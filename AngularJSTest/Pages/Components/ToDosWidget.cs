@@ -49,7 +49,7 @@ namespace AngularJSTest.Pages.Components
         /// </returns>
         public int GetNumberOfItems()
         {
-           return int.Parse(Driver.FindElement(By.XPath("//span[@id='todo - count']/strong")).Text);
+           return int.Parse(Driver.FindElement(By.XPath("//span[@id='todo-count']/strong")).Text);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace AngularJSTest.Pages.Components
         public List<ToDo> GetToDos()
         {
             Driver.WaitForPageReady();
-            var toDoElements = Driver.FindElements(By.XPath("//*[@id='todo - list']//li"));
+            var toDoElements = Driver.FindElements(By.XPath("//*[@id='todo-list']//li"));
             List<ToDo> toDos = new List<ToDo>();
             foreach (var el in toDoElements)
             {
@@ -80,7 +80,7 @@ namespace AngularJSTest.Pages.Components
         public void ClickClearCompletedButton()
         {
             Driver.WaitForPageReady();
-            Driver.FindElement(By.Id("clear - completed")).Click();
+            Driver.FindElement(By.Id("clear-completed")).Click();
         }
 
         /// <summary>

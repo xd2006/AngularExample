@@ -97,6 +97,7 @@
     <Compile Include="Service\Logger\NLogTemplates\DefaultLogPathGetter.cs" />
     <Compile Include="StepsDefinitions\BeforeAfterScenario.cs" />
     <Compile Include="StepsDefinitions\FooterSteps.cs" />
+    <Compile Include="StepsDefinitions\GeneralSteps.cs" />
     <Compile Include="StepsDefinitions\StepsTemplate.cs" />
     <Compile Include="Tests\ComponentTestsFooter.feature.cs">
       <AutoGen>True</AutoGen>
