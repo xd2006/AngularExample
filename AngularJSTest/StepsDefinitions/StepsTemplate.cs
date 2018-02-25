@@ -2,6 +2,7 @@
 namespace AngularJSTest.StepsDefinitions
 {
     using System;
+    using System.Collections.Specialized;
     using System.Drawing.Imaging;
     using System.IO;
     using System.Linq;
@@ -80,10 +81,13 @@ namespace AngularJSTest.StepsDefinitions
         /// </returns>
         protected static string DefaultLogFolder()
         {
-            string driveCandidates = "CDEFGHF";
-            var validDrive = driveCandidates.Select(c => $"{c}:").FirstOrDefault(Directory.Exists);
+            string driveCandidates = "CDEFGH";
+            string validDrive = driveCandidates.Select(c => $"{c}:").FirstOrDefault(Directory.Exists);
 
-            return $"{validDrive}\\{DateTime.Now:ddMM}";
+            NameValueCollection appSettings = System.Configuration.ConfigurationManager.AppSettings;
+            string folder = appSettings["LogFolder"] ?? string.Empty;
+
+            return $"{validDrive}\\{folder}\\{DateTime.Now:ddMM}";
         }
     }
 }

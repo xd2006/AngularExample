@@ -2,6 +2,8 @@
 
 namespace AngularJSTest.StepsDefinitions
 {
+    using AngularJSTest.Service;
+
     using NUnit.Framework;
     using TechTalk.SpecFlow;
 
@@ -23,6 +25,7 @@ namespace AngularJSTest.StepsDefinitions
         public void ThenISeeThePageIsOpened(string pageUrl)
         {
             App.Logger.Info($"Checking that page '{pageUrl}' is opened");
+            App.Pages.Driver.WaitForPageReady();
             var url = App.Main.GetPageUrl();
             Assert.That(url.Contains(pageUrl));
 

@@ -84,11 +84,14 @@
     <Compile Include="Core\WebDriverFactory.cs" />
     <Compile Include="Helpers\HelperTemplate.cs" />
     <Compile Include="Helpers\MainHelper.cs" />
+    <Compile Include="Models\ToDo.cs" />
     <Compile Include="Pages\Components\ComponentTemplate.cs" />
     <Compile Include="Pages\Components\Footer.cs" />
     <Compile Include="Pages\Components\ToDosWidget.cs" />
     <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\PageTemplate.cs" />
+    <Compile Include="Resources\Enums.cs" />
+    <Compile Include="Service\CustomExpectedConditions.cs" />
     <Compile Include="Service\DriverExtensions.cs" />
     <Compile Include="Service\Logger\NLogTemplates\DriveFinder.cs" />
     <Compile Include="Service\Logger\NLogTemplates\DefaultLogPathGetter.cs" />
