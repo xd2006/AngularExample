@@ -1,4 +1,5 @@
-﻿namespace AngularJSTest.Core
+﻿
+namespace AngularJSTest.Core
 {
     using AngularJSTest.Core.AuxManagers;
     using AngularJSTest.Helpers;
@@ -62,7 +63,7 @@
         }
 
         /// <summary>
-        /// Gets the pages.
+        /// Gets the pages manager
         /// </summary>
         public PageManager Pages => this.pages ?? (this.pages = new PageManager(this.capabilities, this.baseUrl, this.hubUrl));
 

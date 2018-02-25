@@ -11,12 +11,13 @@ namespace AngularJSTest.Helpers
         /// <summary>
         /// Initializes a new instance of the <see cref="MainHelper"/> class.
         /// </summary>
-        /// <param name="manager">
-        /// The application manager.
+        /// <param name="app">
+        /// The application app.
         /// </param>
-        public MainHelper(ApplicationManager manager)
-            : base(manager)
+        public MainHelper(ApplicationManager app)
+            : base(app)
         {
         }
+        
     }
 }

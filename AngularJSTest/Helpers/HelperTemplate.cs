@@ -3,24 +3,25 @@ namespace AngularJSTest.Helpers
 {
     using AngularJSTest.Core;
 
+    /// <summary>
+    /// The helper template.
+    /// </summary>
     public abstract class HelperTemplate
     {
         /// <summary>
-        /// The manager.
-        /// </summary>
-        protected ApplicationManager Manager;
-
-        /// <summary>
         /// Initializes a new instance of the <see cref="HelperTemplate"/> class.
         /// </summary>
-        /// <param name="manager">
-        /// The manager.
+        /// <param name="app">
+        /// The app.
         /// </param>
-        public HelperTemplate(ApplicationManager manager)
+        protected HelperTemplate(ApplicationManager app)
         {
-            this.Manager = manager;
+            this.App = app;
         }
 
-
+        /// <summary>
+        /// Gets app. manager
+        /// </summary>
+        public ApplicationManager App { get; }
     }
 }

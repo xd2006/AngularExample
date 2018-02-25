@@ -43,6 +43,11 @@ namespace AngularJSTest.Core.AuxManagers
             this.BaseUrl = baseUrl;
         }
 
+        public void NavigateToBaseUrl()
+        {
+            this.Driver.Navigate().GoToUrl(this.BaseUrl);
+        }
+
 
     }
 }
