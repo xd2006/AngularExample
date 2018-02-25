@@ -1,20 +1,20 @@
-﻿namespace AngularJSTest.Pages
+﻿
+namespace AngularJSTest.Pages.Components
 {
     using OpenQA.Selenium;
 
     /// <summary>
-    /// The page template.
+    /// The component template.
     /// </summary>
-    public abstract class PageTemplate
+    public class ComponentTemplate
     {
-      
         /// <summary>
-        /// Initializes a new instance of the <see cref="PageTemplate"/> class.
+        /// Initializes a new instance of the <see cref="ComponentTemplate"/> class.
         /// </summary>
         /// <param name="driver">
         /// The driver.
         /// </param>
-        protected PageTemplate(IWebDriver driver)
+        public ComponentTemplate(IWebDriver driver)
         {
             this.Driver = driver;
         }

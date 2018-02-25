@@ -4,17 +4,17 @@ namespace AngularJSTest.Pages.Components
     using OpenQA.Selenium;
 
     /// <summary>
-    /// The footer.
+    /// The to dos widget.
     /// </summary>
-    public class Footer : ComponentTemplate
+    public class ToDosWidget : ComponentTemplate
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Footer"/> class.
+        /// Initializes a new instance of the <see cref="ToDosWidget"/> class.
         /// </summary>
         /// <param name="driver">
         /// The driver.
         /// </param>
-        public Footer(IWebDriver driver)
+        public ToDosWidget(IWebDriver driver)
             : base(driver)
         {
         }

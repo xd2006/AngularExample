@@ -6,19 +6,20 @@
     using System.Text;
 
     using NLog;
+    using NLog.Config;
     using NLog.Internal;
     using NLog.LayoutRenderers;
 
     /// <summary>
-    /// The default logpath getter class.
+    /// The default log path getter class.
     /// </summary>
     [LayoutRenderer("GetDefaultLogPath")]
-    public class GetDefaultLogPath : LayoutRenderer
+    public class GetDefaultLogPathLayoutRenderer : LayoutRenderer
     {
         /// <summary>
-        /// The _app settings.
+        /// The app settings.
         /// </summary>
-        private static readonly NameValueCollection AppSettings = System.Configuration.ConfigurationManager.AppSettings;
+        private readonly NameValueCollection appSettings = System.Configuration.ConfigurationManager.AppSettings;
 
         /// <summary>
         /// The append.
@@ -33,7 +34,7 @@
         {
             builder.Append(this.GetPathFromParameters());
         }
-
+        
         /// <summary>
         /// The get estimated buffer size.
         /// </summary>
@@ -45,7 +46,7 @@
         /// </returns>
         protected int GetEstimatedBufferSize(LogEventInfo logEvent)
         {
-            return 2;
+            return 20;
         }
 
         /// <summary>
@@ -56,12 +57,12 @@
         /// </returns>
         private string GetPathFromParameters()
         {
-            if (!string.IsNullOrEmpty(AppSettings["LogFolder"]))
+            if (!string.IsNullOrEmpty(this.appSettings["LogFolder"]))
             {
-                return AppSettings["LogFolder"];
+                return this.appSettings["LogFolder"];
             }
 
-            return "C:\\TestResults\\";
+            return "TestResults";
         }
     }
 }

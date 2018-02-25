@@ -78,16 +78,37 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Core\ApplicationManager.cs" />
+    <Compile Include="Core\AuxManagers\PageManager.cs" />
+    <Compile Include="Core\Starter.cs" />
     <Compile Include="Core\WebDriverFactory.cs" />
+    <Compile Include="Helpers\HelperTemplate.cs" />
+    <Compile Include="Helpers\MainHelper.cs" />
+    <Compile Include="Pages\Components\ComponentTemplate.cs" />
     <Compile Include="Pages\Components\Footer.cs" />
+    <Compile Include="Pages\Components\ToDosWidget.cs" />
     <Compile Include="Pages\MainPage.cs" />
     <Compile Include="Pages\PageTemplate.cs" />
     <Compile Include="Service\Logger\NLogTemplates\DriveFinder.cs" />
-    <Compile Include="Service\Logger\NLogTemplates\GetDefaultLogpath.cs" />
-    <Compile Include="Tests\ComponentTests.cs" />
-    <Compile Include="Tests\E2ETests.cs" />
-    <Compile Include="Tests\SecurityTests.cs" />
+    <Compile Include="Service\Logger\NLogTemplates\DefaultLogPathGetter.cs" />
+    <Compile Include="StepsDefinitions\BeforeAfterScenario.cs" />
+    <Compile Include="StepsDefinitions\StepsTemplate.cs" />
+    <Compile Include="Tests\ComponentTests.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComponentTests.feature</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\E2ETests.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>E2ETests.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Tests\SecurityTests.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SecurityTests.feature</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -99,6 +120,18 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Tests\ComponentTests.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ComponentTests.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Tests\E2ETests.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>E2ETests.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Tests\SecurityTests.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>SecurityTests.feature.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
