@@ -1,6 +1,7 @@
 ﻿
 namespace AngularJSTest.Helpers
 {
+    using System;
     using System.Linq;
 
     using AngularJSTest.Core;
@@ -68,6 +69,41 @@ namespace AngularJSTest.Helpers
         public ToDo GetToDoItem(string itemName)
         {
             return App.Pages.HomePage.ToDosWidget.GetToDos().First(e => e.Name.Equals(itemName));
+        }
+
+        /// <summary>
+        /// The create items if needed.
+        /// </summary>
+        /// <param name="numberOfItems">
+        /// The number of items.
+        /// </param>
+        public void CreateItemsIfNeeded(int numberOfItems)
+        {
+            var toDos = App.Pages.HomePage.ToDosWidget.GetToDos();
+
+            if (toDos.Count < numberOfItems)
+            {
+                for (int i = 1; i <= numberOfItems - toDos.Count; i++)
+                {
+                   string itemName = "item" + DateTime.Now.Second + DateTime.Now.Millisecond;
+                   App.Pages.HomePage.ToDosWidget.AddNewToDoItem(itemName); 
+                }
+            }
+        }
+
+        /// <summary>
+        /// Remove any item.
+        /// </summary>
+        /// <returns>
+        /// The <see cref="string"/>.
+        /// </returns>
+        public string RemoveAnyItem()
+        {
+            var itemsList = this.App.Pages.HomePage.ToDosWidget.GetToDos().Select(e => e.Name).ToList();
+            var randomNumber = ServiceMethods.GetRandomNumbers(0, itemsList.Count - 1, 1).ToList().First();
+            var name = itemsList[randomNumber];
+            App.Pages.HomePage.ToDosWidget.RemoveToDoItem(name);
+            return name;
         }
     }
 }

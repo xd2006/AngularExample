@@ -2,6 +2,7 @@
 namespace AngularJSTest.StepsDefinitions
 {
     using System;
+    using System.Collections.Generic;
     using System.Collections.Specialized;
     using System.Drawing.Imaging;
     using System.IO;
@@ -88,6 +89,59 @@ namespace AngularJSTest.StepsDefinitions
             string folder = appSettings["LogFolder"] ?? string.Empty;
 
             return $"{validDrive}\\{folder}\\{DateTime.Now:ddMM}";
+        }
+
+        /// <summary>
+        /// The set scenario context parameter.
+        /// </summary>
+        /// <param name="parameterName">
+        /// The parameter name.
+        /// </param>
+        /// <param name="parameterValue">
+        /// The parameter value.
+        /// </param>
+        /// <typeparam name="T">
+        /// </typeparam>
+        public void SetScenarioContextParameter<T>(string parameterName, T parameterValue)
+        {
+            try
+            {
+                ScenarioContext.Current.Get<T>(parameterName);
+                ScenarioContext.Current[parameterName] = parameterValue;
+            }
+            catch (Exception e)
+            {
+                ScenarioContext.Current.Add(parameterName, parameterValue);
+            }
+
+        }
+
+        /// <summary>
+        /// Get scenario context parameter.
+        /// </summary>
+        /// <param name="parameterName">
+        /// The parameter name.
+        /// </param>
+        /// <typeparam name="T">
+        /// </typeparam>
+        /// <returns>
+        /// The <see cref="T"/>.
+        /// </returns>
+        public T GetScenarioContextParameter<T>(string parameterName)
+        {
+            T parameter = default(T);
+            try
+            {
+                parameter = ScenarioContext.Current.Get<T>(parameterName);
+            }
+            catch (KeyNotFoundException e)
+            {
+                SetScenarioContextParameter(parameterName, parameter);
+                parameter = ScenarioContext.Current.Get<T>(parameterName);
+            }
+
+            return parameter;
+
         }
     }
 }

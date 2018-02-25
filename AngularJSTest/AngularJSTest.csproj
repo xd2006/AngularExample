@@ -95,10 +95,16 @@
     <Compile Include="Service\DriverExtensions.cs" />
     <Compile Include="Service\Logger\NLogTemplates\DriveFinder.cs" />
     <Compile Include="Service\Logger\NLogTemplates\DefaultLogPathGetter.cs" />
+    <Compile Include="Service\ServiceMethods.cs" />
     <Compile Include="StepsDefinitions\BeforeAfterScenario.cs" />
     <Compile Include="StepsDefinitions\FooterSteps.cs" />
     <Compile Include="StepsDefinitions\GeneralSteps.cs" />
     <Compile Include="StepsDefinitions\StepsTemplate.cs" />
+    <Compile Include="Tests\ComponentTests.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ComponentTests.feature</DependentUpon>
+    </Compile>
     <Compile Include="Tests\ComponentTestsFooter.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -126,6 +132,10 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+    <None Include="Tests\ComponentTests.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ComponentTests.feature.cs</LastGenOutput>
+    </None>
     <None Include="Tests\ComponentTestsFooter.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ComponentTestsFooter.feature.cs</LastGenOutput>

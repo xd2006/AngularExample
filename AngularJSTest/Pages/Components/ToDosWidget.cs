@@ -61,14 +61,20 @@ namespace AngularJSTest.Pages.Components
         public List<ToDo> GetToDos()
         {
             Driver.WaitForPageReady();
+            Driver.DisableTimeout();
             var toDoElements = Driver.FindElements(By.XPath("//*[@id='todo-list']//li"));
+            Driver.SetTimeout();
+
             List<ToDo> toDos = new List<ToDo>();
-            foreach (var el in toDoElements)
+            if (toDoElements.Count > 0)
             {
-               ToDo toDo = new ToDo(el);
-                toDo.Name = el.FindElement(By.XPath(".//label")).Text;
-                toDo.Completed = el.GetAttribute("class").Contains("completed");
-                toDos.Add(toDo);
+                foreach (var el in toDoElements)
+                {
+                    ToDo toDo = new ToDo(el);
+                    toDo.Name = el.FindElement(By.XPath(".//label")).Text;
+                    toDo.Completed = el.GetAttribute("class").Contains("completed");
+                    toDos.Add(toDo);
+                }
             }
 
             return toDos;
@@ -115,7 +121,8 @@ namespace AngularJSTest.Pages.Components
         {
             var item = this.GetToDos().First(e => e.Name.Equals(itemName));
             var removeButton = item.ParentElement.FindElement(By.XPath(".//button[@class='destroy']"));
-            this.Driver.HoverElementAndClick(removeButton);
+            this.Driver.HoverElement(item.ParentElement);
+            removeButton.Click();
         }
 
         /// <summary>

@@ -110,5 +110,30 @@ namespace AngularJSTest.Service
             Actions action = new Actions(driver);
             action.MoveToElement(element).Click().Perform();
         }
+
+        /// <summary>
+        /// Disable implicit timeout.
+        /// </summary>
+        /// <param name="driver">
+        /// The driver.
+        /// </param>
+        public static void DisableTimeout(this IWebDriver driver)
+        {
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(1);
+        }
+
+        /// <summary>
+        /// Set implicit timeout.
+        /// </summary>
+        /// <param name="driver">
+        /// The driver.
+        /// </param>
+        /// <param name="timeoutSec">
+        /// The timeout sec.
+        /// </param>
+        public static void SetTimeout(this IWebDriver driver, int timeoutSec = 10)
+        {
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(timeoutSec);
+        }
     }
 }
