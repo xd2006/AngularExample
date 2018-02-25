@@ -21,9 +21,6 @@ namespace AngularJSTest.Tests
     [Binding]
     public class BeforeAfterScenario : StepsTemplate
     {
-        private static readonly NameValueCollection appSettings = System.Configuration.ConfigurationManager.AppSettings;
-
-
         /// <summary>
         /// The before test fixture.
         /// </summary>

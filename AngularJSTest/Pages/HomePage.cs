@@ -7,7 +7,7 @@
     /// <summary>
     /// The main page.
     /// </summary>
-    public class MainPage : PageTemplate
+    public class HomePage : PageTemplate
     {
         /// <summary>
         /// The footer.
@@ -20,12 +20,12 @@
         private ToDosWidget toDosWidget;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="MainPage"/> class.
+        /// Initializes a new instance of the <see cref="HomePage"/> class.
         /// </summary>
         /// <param name="driver">
         /// The driver.
         /// </param>
-        public MainPage(IWebDriver driver)
+        public HomePage(IWebDriver driver)
             : base(driver)
         {
         }

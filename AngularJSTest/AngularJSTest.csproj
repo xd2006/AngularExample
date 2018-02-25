@@ -87,16 +87,18 @@
     <Compile Include="Pages\Components\ComponentTemplate.cs" />
     <Compile Include="Pages\Components\Footer.cs" />
     <Compile Include="Pages\Components\ToDosWidget.cs" />
-    <Compile Include="Pages\MainPage.cs" />
+    <Compile Include="Pages\HomePage.cs" />
     <Compile Include="Pages\PageTemplate.cs" />
+    <Compile Include="Service\DriverExtensions.cs" />
     <Compile Include="Service\Logger\NLogTemplates\DriveFinder.cs" />
     <Compile Include="Service\Logger\NLogTemplates\DefaultLogPathGetter.cs" />
     <Compile Include="StepsDefinitions\BeforeAfterScenario.cs" />
+    <Compile Include="StepsDefinitions\FooterSteps.cs" />
     <Compile Include="StepsDefinitions\StepsTemplate.cs" />
-    <Compile Include="Tests\ComponentTests.feature.cs">
+    <Compile Include="Tests\ComponentTestsFooter.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ComponentTests.feature</DependentUpon>
+      <DependentUpon>ComponentTestsFooter.feature</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tests\E2ETests.feature.cs">
@@ -120,9 +122,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <None Include="Tests\ComponentTests.feature">
+    <None Include="Tests\ComponentTestsFooter.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ComponentTests.feature.cs</LastGenOutput>
+      <LastGenOutput>ComponentTestsFooter.feature.cs</LastGenOutput>
     </None>
     <None Include="Tests\E2ETests.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

@@ -3,6 +3,8 @@ namespace AngularJSTest.Core.AuxManagers
 {
     using System;
 
+    using AngularJSTest.Pages;
+
     using OpenQA.Selenium;
 
     public class PageManager
@@ -10,12 +12,17 @@ namespace AngularJSTest.Core.AuxManagers
         /// <summary>
         /// The driver.
         /// </summary>
-        public IWebDriver Driver;
+        private IWebDriver driver;
 
         /// <summary>
         /// The base url.
         /// </summary>
-        protected string BaseUrl;
+        private string BaseUrl;
+
+        /// <summary>
+        /// The home page.
+        /// </summary>
+        private HomePage homePage;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="PageManager"/> class.
@@ -43,11 +50,34 @@ namespace AngularJSTest.Core.AuxManagers
             this.BaseUrl = baseUrl;
         }
 
+        public IWebDriver Driver
+        {
+            get
+            {
+                return this.driver;
+            }
+
+            set
+            {
+                this.driver = value;
+            }
+        }
+
+        #region pages declaration
+
+        /// <summary>
+        /// The home page.
+        /// </summary>
+        public HomePage HomePage => this.homePage ?? (this.homePage = new HomePage(this.Driver));
+
+        #endregion
+
+        /// <summary>
+        /// The navigate to base url.
+        /// </summary>
         public void NavigateToBaseUrl()
         {
             this.Driver.Navigate().GoToUrl(this.BaseUrl);
         }
-
-
     }
 }
