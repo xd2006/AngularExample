@@ -7,7 +7,18 @@ namespace AngularJSTest.Models
     /// The to do item.
     /// </summary>
     public class ToDo
-    {
+    {      
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ToDo"/> class.
+        /// </summary>
+        /// <param name="parentElement">
+        /// The parent element.
+        /// </param>
+        public ToDo(IWebElement parentElement)
+        {
+            this.ParentElement = parentElement;
+        }
+
         /// <summary>
         /// Gets or sets the parent element.
         /// </summary>
@@ -24,14 +35,60 @@ namespace AngularJSTest.Models
         public bool Completed { get; set; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="ToDo"/> class.
+        /// The equals.
         /// </summary>
-        /// <param name="parentElement">
-        /// The parent element.
+        /// <param name="obj">
+        /// The object
         /// </param>
-        public ToDo(IWebElement parentElement)
+        /// <returns>
+        /// If equals <see cref="bool"/>.
+        /// </returns>
+        public override bool Equals(object obj)
         {
-            this.ParentElement = parentElement;
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != this.GetType())
+            {
+                return false;
+            }
+
+            return this.Equals((ToDo)obj);
+        }
+
+        /// <summary>
+        /// The get hash code.
+        /// </summary>
+        /// <returns>
+        /// HashCode <see cref="int"/>.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            unchecked
+            {
+                return ((this.Name != null ? this.Name.GetHashCode() : 0) * 397) ^ this.Completed.GetHashCode();
+            }
+        }
+
+        /// <summary>
+        /// The equals.
+        /// </summary>
+        /// <param name="other">
+        /// The other.
+        /// </param>
+        /// <returns>
+        /// If equals <see cref="bool"/>.
+        /// </returns>
+        protected bool Equals(ToDo other)
+        {
+            return string.Equals(this.Name, other.Name) && this.Completed == other.Completed;
         }
     }
 }

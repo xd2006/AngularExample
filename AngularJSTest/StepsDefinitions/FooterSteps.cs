@@ -1,5 +1,4 @@
 ﻿
-
 namespace AngularJSTest.StepsDefinitions
 {
     using AngularJSTest.Service;
@@ -14,12 +13,18 @@ namespace AngularJSTest.StepsDefinitions
     [Binding]
     public class FooterSteps : StepsTemplate
     {
+        #region When
+
         [When(@"I click on the footer (.*)")]
         public void WhenIClickOnTheFooterLink(string linkText)
         {
             App.Logger.Info($"Clicking on link with text '{linkText}'");
             App.Main.ClickFooterLink(linkText);
         }
+
+        #endregion
+
+        #region Then
 
         [Then(@"I see the (.*) is opened")]
         public void ThenISeeThePageIsOpened(string pageUrl)
@@ -28,9 +33,8 @@ namespace AngularJSTest.StepsDefinitions
             App.Pages.Driver.WaitForPageReady();
             var url = App.Main.GetPageUrl();
             Assert.That(url.Contains(pageUrl));
-
         }
 
-
+        #endregion
     }
 }

@@ -13,7 +13,7 @@
         /// <summary>
         /// The application settings.
         /// </summary>
-        private readonly NameValueCollection appSettings = System.Configuration.ConfigurationManager.AppSettings;
+        private static readonly NameValueCollection appSettings = System.Configuration.ConfigurationManager.AppSettings;
 
         /// <summary>
         /// The start application manager.
@@ -24,11 +24,11 @@
         public ApplicationManager StartApplicationManager()
         {
             // Initially try to get values from env variables and then form app.config
-            var browser = Environment.GetEnvironmentVariable("BROWSER") ?? this.appSettings["Browser"] ?? "chrome";
-            var baseUrl = Environment.GetEnvironmentVariable("URL") ?? this.appSettings["Url"];
-            var hubUrl = Environment.GetEnvironmentVariable("HUBURL") ?? this.appSettings["HubUrl"];
+            var browser = Environment.GetEnvironmentVariable("BROWSER") ?? appSettings["Browser"] ?? "chrome";
+            var baseUrl = Environment.GetEnvironmentVariable("URL") ?? appSettings["Url"];
+            var hubUrl = Environment.GetEnvironmentVariable("HUBURL") ?? appSettings["HubUrl"];
 
-            var capabilities = this.DefineCapabilities(browser);
+            var capabilities = DefineCapabilities(browser);
             var app = new ApplicationManager(capabilities, baseUrl, hubUrl);
             return app;
         }
@@ -42,7 +42,7 @@
         /// <returns>
         /// The <see cref="DesiredCapabilities"/>.
         /// </returns>
-        private DesiredCapabilities DefineCapabilities(string browser)
+        private static DesiredCapabilities DefineCapabilities(string browser)
         {
             DesiredCapabilities capabilities = new DesiredCapabilities();
             capabilities.SetCapability(CapabilityType.BrowserName, browser);

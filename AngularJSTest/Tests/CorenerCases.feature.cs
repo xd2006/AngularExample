@@ -18,20 +18,20 @@ namespace AngularJSTest.Tests
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "2.3.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("E2ETests")]
-    public partial class E2ETestsFeature
+    [NUnit.Framework.DescriptionAttribute("CorenerCases")]
+    public partial class CorenerCasesFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-#line 1 "E2ETests.feature"
+#line 1 "CorenerCases.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "E2ETests", null, ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CorenerCases", "\tPeculiar scenarios", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -63,37 +63,39 @@ namespace AngularJSTest.Tests
             testRunner.CollectScenarioErrors();
         }
         
-        public virtual void FeatureBackground()
-        {
-#line 3
-#line 4
-testRunner.Given("All items are removed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line 5
-testRunner.And("\"10\" to do items are created", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-        }
-        
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Check Filters")]
-        [NUnit.Framework.CategoryAttribute("end2end")]
-        public virtual void CheckFilters()
+        [NUnit.Framework.DescriptionAttribute("Add items")]
+        [NUnit.Framework.CategoryAttribute("Add")]
+        public virtual void AddItems()
         {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Check Filters", new string[] {
-                        "end2end"});
-#line 8
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add items", new string[] {
+                        "Add"});
+#line 5
 this.ScenarioSetup(scenarioInfo);
-#line 3
-this.FeatureBackground();
-#line 9
- testRunner.When("I complete \"4\" items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 10
- testRunner.And("I select \"Active\" filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                        "item name"});
+            table1.AddRow(new string[] {
+                        "!123&$"});
+            table1.AddRow(new string[] {
+                        "verry verrry looongggg onneeeee 123234455555 SSS DDDDD some other words up to des" +
+                            "ired limit"});
+            table1.AddRow(new string[] {
+                        "надо что-то делать"});
+#line 6
+testRunner.When("I add items", ((string)(null)), table1, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                        "item name"});
+            table2.AddRow(new string[] {
+                        "!123&$"});
+            table2.AddRow(new string[] {
+                        "verry verrry looongggg onneeeee 123234455555 SSS DDDDD some other words up to des" +
+                            "ired limit"});
+            table2.AddRow(new string[] {
+                        "надо что-то делать"});
 #line 11
- testRunner.Then("I see only active to do items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 12
- testRunner.When("I select \"Completed\" filter", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 13
- testRunner.Then("I see only completed to do items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+testRunner.Then("I see items are displayed", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }

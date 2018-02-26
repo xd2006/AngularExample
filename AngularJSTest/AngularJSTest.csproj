@@ -111,6 +111,11 @@
       <DependentUpon>ComponentTestsFooter.feature</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\CorenerCases.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CorenerCases.feature</DependentUpon>
+    </Compile>
     <Compile Include="Tests\E2ETests.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -139,6 +144,10 @@
     <None Include="Tests\ComponentTestsFooter.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ComponentTestsFooter.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Tests\CorenerCases.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CorenerCases.feature.cs</LastGenOutput>
     </None>
     <None Include="Tests\E2ETests.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>

@@ -7,8 +7,11 @@ namespace AngularJSTest.StepsDefinitions
     using System.Drawing.Imaging;
     using System.IO;
     using System.Linq;
+    using System.Threading;
 
     using AngularJSTest.Core;
+
+    using NLog;
 
     using OpenQA.Selenium;
 
@@ -23,11 +26,23 @@ namespace AngularJSTest.StepsDefinitions
         /// The app manager
         /// </summary>
         private static ApplicationManager appM;
-        
+
         /// <summary>
         /// Gets the app. manager
         /// </summary>
-        protected static ApplicationManager App => appM ?? (appM = new Starter().StartApplicationManager());
+        protected static ApplicationManager App
+        {
+            get
+            {
+                appM = appM ?? new Starter().StartApplicationManager();
+                appM.Logger = LogManager.GetCurrentClassLogger();
+                return appM;
+            }
+            set
+            {
+                appM = value;
+            }
+        }
 
         /// <summary>
         /// The take screenshot.
@@ -142,6 +157,13 @@ namespace AngularJSTest.StepsDefinitions
 
             return parameter;
 
+        }
+
+        public static void Clean()
+        {
+            WebDriverFactory.DismissAll();
+            App = null;
+            Thread.Sleep(2000);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace AngularJSTest.Pages.Components
         /// <param name="filter">
         /// The filter.
         /// </param>
-        public void ClickFilter(Enums filter)
+        public void ClickFilter(Enums.Filters filter)
         {
             string enumLctMask = "//ul[@id='filters']/li/a[.='{0}']";
             Driver.FindElement(By.XPath(string.Format(enumLctMask, filter))).Click();
@@ -79,6 +79,29 @@ namespace AngularJSTest.Pages.Components
 
             return toDos;
         }
+
+        /// <summary>
+        /// The get not completed to dos.
+        /// </summary>
+        /// <returns>
+        /// The list of active to dos <see cref="List"/>.
+        /// </returns>
+        public List<ToDo> GetActiveToDos()
+        {
+            return this.GetToDos().Where(e => !e.Completed).ToList();
+        }
+
+        /// <summary>
+        /// The get completed to dos.
+        /// </summary>
+        /// <returns>
+        /// The list of active to dos <see cref="List"/>.
+        /// </returns>
+        public List<ToDo> GetCompletedToDos()
+        {
+            return this.GetToDos().Where(e => e.Completed).ToList();
+        }
+
 
         /// <summary>
         /// The click clear completed button.
@@ -128,7 +151,7 @@ namespace AngularJSTest.Pages.Components
         /// <summary>
         /// The select all to do items.
         /// </summary>
-        public void SelectAllToDoItems()
+        public void CheckAllToDoItems()
         {
             Driver.FindElement(By.Id("toggle-all")).Click();
         }
@@ -148,10 +171,9 @@ namespace AngularJSTest.Pages.Components
         {
             var toDoItem = this.GetToDos().First(e => e.Name.Equals(oldName));
             Driver.DoubleClick(toDoItem.ParentElement);
-            toDoItem = this.GetToDos().First(e => e.Name.Equals(oldName));
             var editField = toDoItem.ParentElement.FindElement(By.XPath(".//input[contains(@class, 'edit')]"));
             editField.Clear();
-            editField.SendKeys(newName);
+            editField.SendKeys(newName + Keys.Enter);           
         }
 
         #region private methods
