@@ -93,18 +93,27 @@ namespace AngularJSTest.Helpers
         }
 
         /// <summary>
-        /// Remove any item.
+        /// Remove number of any items.
         /// </summary>
+        /// <param name="numberOfItems">
+        /// The number Of Items.
+        /// </param>
         /// <returns>
-        /// The <see cref="string"/>.
+        /// Removed items names<see cref="List"/>.
         /// </returns>
-        public string RemoveAnyItem()
+        public List<string> RemoveAnyItems(int numberOfItems = 1)
         {
             var itemsList = this.GetToDoItemsNamesList();
-            var randomNumber = ServiceMethods.GetRandomNumbers(0, itemsList.Count - 1, 1).ToList().First();
-            var name = itemsList[randomNumber];
-            App.Pages.HomePage.ToDosWidget.RemoveToDoItem(name);
-            return name;
+            var randomNumbers = ServiceMethods.GetRandomNumbers(0, itemsList.Count - 1, numberOfItems).ToList();
+            List<string> removedItems = new List<string>();
+            foreach (var index in randomNumbers)
+            {
+                var name = itemsList[index];
+                App.Pages.HomePage.ToDosWidget.RemoveToDoItem(name);
+                removedItems.Add(name);
+            }
+            
+            return removedItems;
         }
 
         /// <summary>

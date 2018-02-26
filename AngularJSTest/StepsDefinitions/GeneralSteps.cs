@@ -5,6 +5,9 @@ namespace AngularJSTest.StepsDefinitions
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Text;
+
+    using AngularJSTest.Service;
 
     using NUnit.Framework;
 
@@ -54,16 +57,16 @@ namespace AngularJSTest.StepsDefinitions
         }
 
         /// <summary>
-        /// Remove any item and write it's name to context variable 'ItemName'.
+        /// Remove any items and write their name to context variable 'RemovedItemsNames'.
         /// Writes initial items list to context - 'Items'
         /// </summary>
         [When(@"I remove any item")]
         public void WhenIRemoveAnyItem()
         {
-            App.Logger.Info("Removing any item");
+            App.Logger.Info("Removing any item(s)");
             var itemsNames = App.Main.GetToDoItemsNamesList();
-            var name = App.Main.RemoveAnyItem();
-            this.SetScenarioContextParameter("ItemName", name);
+            var removedItems = App.Main.RemoveAnyItems();
+            this.SetScenarioContextParameter("RemovedItemsNames", removedItems);
             this.SetScenarioContextParameter("Items", itemsNames);
         }
 
@@ -73,12 +76,15 @@ namespace AngularJSTest.StepsDefinitions
         [Then(@"I do not see deleted item in the list any more")]
         public void ThenIDoNotSeeDeletedItemInTheListAnyMore()
         {
-            App.Logger.Info("Check that item was removed");
-            var name = this.GetScenarioContextParameter<string>("ItemName");
+            App.Logger.Info("Check that item(s) was/were removed");
+            var removedNames = this.GetScenarioContextParameter<List<string>>("RemovedItemsNames");
+            var removedNamedFormatted = ServiceMethods.ListToString(removedNames);
+
+            App.Logger.Info($"Removed items to check: {removedNamedFormatted}");
             var items = App.Main.GetToDoItemsNamesList();
             var initialItemsList = this.GetScenarioContextParameter<List<string>>("Items");
 
-            Assert.That(items.SequenceEqual(initialItemsList.Except(new List<string> { name })));
+            Assert.That(items.SequenceEqual(initialItemsList.Except(removedNames)));
         }
     }
 }
