@@ -3,6 +3,7 @@
 namespace AngularJSTest.StepsDefinitions
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using NUnit.Framework;
@@ -54,22 +55,30 @@ namespace AngularJSTest.StepsDefinitions
 
         /// <summary>
         /// Remove any item and write it's name to context variable 'ItemName'.
+        /// Writes initial items list to context - 'Items'
         /// </summary>
         [When(@"I remove any item")]
         public void WhenIRemoveAnyItem()
         {
             App.Logger.Info("Removing any item");
+            var itemsNames = App.Main.GetToDoItemsNamesList();
             var name = App.Main.RemoveAnyItem();
             this.SetScenarioContextParameter("ItemName", name);
+            this.SetScenarioContextParameter("Items", itemsNames);
         }
 
+        /// <summary>
+        /// Verify deleted item is not displayed any more.
+        /// </summary>
         [Then(@"I do not see deleted item in the list any more")]
         public void ThenIDoNotSeeDeletedItemInTheListAnyMore()
         {
             App.Logger.Info("Check that item was removed");
-            string name = this.GetScenarioContextParameter<string>("ItemName");
-            var items = App.Pages.HomePage.ToDosWidget.GetToDos().Select(e => e.Name);
-            Assert.That(!items.Contains(name));
+            var name = this.GetScenarioContextParameter<string>("ItemName");
+            var items = App.Main.GetToDoItemsNamesList();
+            var initialItemsList = this.GetScenarioContextParameter<List<string>>("Items");
+
+            Assert.That(items.SequenceEqual(initialItemsList.Except(new List<string> { name })));
         }
     }
 }

@@ -92,7 +92,7 @@ namespace AngularJSTest.StepsDefinitions
         }
 
         /// <summary>
-        /// The set scenario context parameter.
+        /// Set scenario context parameter.
         /// </summary>
         /// <param name="parameterName">
         /// The parameter name.

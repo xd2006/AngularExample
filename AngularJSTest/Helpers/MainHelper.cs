@@ -2,6 +2,7 @@
 namespace AngularJSTest.Helpers
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
 
     using AngularJSTest.Core;
@@ -99,11 +100,22 @@ namespace AngularJSTest.Helpers
         /// </returns>
         public string RemoveAnyItem()
         {
-            var itemsList = this.App.Pages.HomePage.ToDosWidget.GetToDos().Select(e => e.Name).ToList();
+            var itemsList = this.GetToDoItemsNamesList();
             var randomNumber = ServiceMethods.GetRandomNumbers(0, itemsList.Count - 1, 1).ToList().First();
             var name = itemsList[randomNumber];
             App.Pages.HomePage.ToDosWidget.RemoveToDoItem(name);
             return name;
+        }
+
+        /// <summary>
+        /// The get to do items names list.
+        /// </summary>
+        /// <returns>
+        /// The names list <see cref="List"/>.
+        /// </returns>
+        public List<string> GetToDoItemsNamesList()
+        {
+            return App.Pages.HomePage.ToDosWidget.GetToDos().Select(e => e.Name).ToList();
         }
     }
 }
