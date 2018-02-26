@@ -1,0 +1,178 @@
+=> AngularJSTest.Tests.ComponentTestsFeature.CompleteAllItems
+| INFO | Test scenario started - Complete All Items |  |
+Given "5" to do items are created
+| INFO | Create 5 to do items is needed |  |
+-> done: GeneralSteps.GivenSeveralToDoAreCreated(5) (8.3s)
+When I complete all items
+| INFO | Make all items complete |  |
+-> done: GeneralSteps.WhenICompleteAllItems() (0.4s)
+Then I see all items in the completed state
+| INFO | Check that all items are completed |  |
+-> done: GeneralSteps.ThenISeeAllItemsInTheCompletedState() (0.4s)
+And I see that items counter displays valid number
+| INFO | Check that active items count is 0 |  |
+-> done: GeneralSteps.ThenISeeThatItemsCounterDisplaysValidNumber() (0.2s)
+| INFO | Test scenario finished - Complete All Items |  |
+=> AngularJSTest.Tests.ComponentTestsFeature.CompleteItems
+| INFO | Test scenario started - Complete Items |  |
+Given "5" to do items are created
+| INFO | Create 5 to do items is needed |  |
+-> done: GeneralSteps.GivenSeveralToDoAreCreated(5) (0.8s)
+When I complete "1" items
+| INFO | Make any 1 items complete |  |
+-> done: GeneralSteps.WhenICompleteItems(1) (1.1s)
+Then I see item in the completed state
+| INFO | Check that item(s) was/were completed |  |
+| INFO | Completed items to check: 
+item6944 |  |
+-> done: GeneralSteps.ThenISeeItemInTheCompletedState() (0.6s)
+And I see that items counter displays valid number
+| INFO | Check that active items count is 4 |  |
+-> done: GeneralSteps.ThenISeeThatItemsCounterDisplaysValidNumber() (0.3s)
+| INFO | Test scenario finished - Complete Items |  |
+=> AngularJSTest.Tests.ComponentTestsFeature.RemoveItems
+| INFO | Test scenario started - Remove Items |  |
+Given "5" to do items are created
+| INFO | Create 5 to do items is needed |  |
+-> done: GeneralSteps.GivenSeveralToDoAreCreated(5) (0.7s)
+When I remove "1" items
+| INFO | Removing any item |  |
+-> done: GeneralSteps.WhenIRemoveAnyItem(1) (1.1s)
+Then I do not see deleted item in the list any more
+| INFO | Check that item(s) was/were removed |  |
+| INFO | Removed items to check: 
+item510 |  |
+-> done: GeneralSteps.ThenIDoNotSeeDeletedItemInTheListAnyMore() (0.4s)
+And I see that items counter displays valid number
+| INFO | Check that active items count is 5 |  |
+-> done: GeneralSteps.ThenISeeThatItemsCounterDisplaysValidNumber() (0.3s)
+| INFO | Test scenario finished - Remove Items |  |
+=> AngularJSTest.Tests.ComponentTestsFeature.RenameItems
+| INFO | Test scenario started - Rename Items |  |
+Given "5" to do items are created
+| INFO | Create 5 to do items is needed |  |
+-> done: GeneralSteps.GivenSeveralToDoAreCreated(5) (0.7s)
+When I rename "2" items
+| INFO | Renaming any item |  |
+-> done: GeneralSteps.WhenIRenameAnyItem(2) (1.4s)
+Then I see that items with new name are displayed
+| INFO | Check that items(s) renamed |  |
+-> done: GeneralSteps.ThenISeeThatItemWithNewNameIsDisplayed() (0.3s)
+| INFO | Test scenario finished - Rename Items |  |
+=> AngularJSTest.Tests.ComponentTestsFeature
+-> Using app.config
+| INFO | Test run started |  |
+=> AngularJSTest.Tests.ComponentTestsFooterFeature.CheckFooterLinks("Christoph Burgdorf","twitter.com/cburgdorf",null)
+| INFO | Test scenario started - CheckFooterLinks |  |
+When I click on the footer Christoph Burgdorf
+| INFO | Clicking on link with text 'Christoph Burgdorf' |  |
+-> done: FooterSteps.WhenIClickOnTheFooterLink("Christoph Burgdorf") (1.7s)
+Then I see the twitter.com/cburgdorf is opened
+| INFO | Checking that page 'twitter.com/cburgdorf' is opened |  |
+-> done: FooterSteps.ThenISeeThePageIsOpened("twitter.com/cburg...") (0.1s)
+| INFO | Test scenario finished - CheckFooterLinks |  |
+=> AngularJSTest.Tests.ComponentTestsFooterFeature.CheckFooterLinks("Eric Bidelman","ericbidelman.tumblr.com",null)
+| INFO | Test scenario started - CheckFooterLinks |  |
+When I click on the footer Eric Bidelman
+| INFO | Clicking on link with text 'Eric Bidelman' |  |
+-> done: FooterSteps.WhenIClickOnTheFooterLink("Eric Bidelman") (3.5s)
+Then I see the ericbidelman.tumblr.com is opened
+| INFO | Checking that page 'ericbidelman.tumblr.com' is opened |  |
+-> done: FooterSteps.ThenISeeThePageIsOpened("ericbidelman.tumb...") (0.0s)
+| INFO | Test scenario finished - CheckFooterLinks |  |
+=> AngularJSTest.Tests.ComponentTestsFooterFeature.CheckFooterLinks("Jacob Mumm","jacobmumm.com",null)
+| INFO | Test scenario started - CheckFooterLinks |  |
+When I click on the footer Jacob Mumm
+| INFO | Clicking on link with text 'Jacob Mumm' |  |
+-> done: FooterSteps.WhenIClickOnTheFooterLink("Jacob Mumm") (3.5s)
+Then I see the jacobmumm.com is opened
+| INFO | Checking that page 'jacobmumm.com' is opened |  |
+-> done: FooterSteps.ThenISeeThePageIsOpened("jacobmumm.com") (0.0s)
+| INFO | Test scenario finished - CheckFooterLinks |  |
+=> AngularJSTest.Tests.ComponentTestsFooterFeature.CheckFooterLinks("Igor Minar","blog.igorminar.com",null)
+| INFO | Test scenario started - CheckFooterLinks |  |
+When I click on the footer Igor Minar
+| INFO | Clicking on link with text 'Igor Minar' |  |
+-> done: FooterSteps.WhenIClickOnTheFooterLink("Igor Minar") (1.8s)
+Then I see the blog.igorminar.com is opened
+| INFO | Checking that page 'blog.igorminar.com' is opened |  |
+-> done: FooterSteps.ThenISeeThePageIsOpened("blog.igorminar.com") (0.0s)
+| INFO | Test scenario finished - CheckFooterLinks |  |
+=> AngularJSTest.Tests.ComponentTestsFooterFeature.CheckFooterLinks("TodoMVC","todomvc.com",null)
+| INFO | Test scenario started - CheckFooterLinks |  |
+When I click on the footer TodoMVC
+| INFO | Clicking on link with text 'TodoMVC' |  |
+-> done: FooterSteps.WhenIClickOnTheFooterLink("TodoMVC") (1.5s)
+Then I see the todomvc.com is opened
+| INFO | Checking that page 'todomvc.com' is opened |  |
+-> done: FooterSteps.ThenISeeThePageIsOpened("todomvc.com") (0.0s)
+| INFO | Test scenario finished - CheckFooterLinks |  |
+=> AngularJSTest.Tests.CorenerCasesFeature.AddItems
+| INFO | Test scenario started - Add items |  |
+When I add items
+  --- table step argument ---
+  | item name                                                                                   |
+  | !123&$                                                                                      |
+  | verry verrry looongggg onneeeee 123234455555 SSS DDDDD some other words up to desired limit |
+  | надо что-то делать                                                                          |
+| INFO | Adding new to do item !123&$ |  |
+| INFO | Adding new to do item verry verrry looongggg onneeeee 123234455555 SSS DDDDD some other words up to desired limit |  |
+| INFO | Adding new to do item надо что-то делать |  |
+-> done: GeneralSteps.WhenIAddItems(<table>) (0.7s)
+Then I see items are displayed
+  --- table step argument ---
+  | item name                                                                                   |
+  | !123&$                                                                                      |
+  | verry verrry looongggg onneeeee 123234455555 SSS DDDDD some other words up to desired limit |
+  | надо что-то делать                                                                          |
+| INFO | Checking that to do item '!123&$' exists |  |
+| INFO | Checking that to do item 'verry verrry looongggg onneeeee 123234455555 SSS DDDDD some other words up to desired limit' exists |  |
+| INFO | Checking that to do item 'надо что-то делать' exists |  |
+-> done: GeneralSteps.ThenISeeItemsAreDisplayed(<table>) (1.4s)
+| INFO | Test scenario finished - Add items |  |
+=> AngularJSTest.Tests.E2ETestsFeature.CheckFilters
+| INFO | Test scenario started - Check Filters |  |
+Given All items are removed
+| INFO | Removing all items |  |
+-> done: GeneralSteps.GivenAllItemsAreRemoved() (1.0s)
+And "10" to do items are created
+| INFO | Create 10 to do items is needed |  |
+-> done: GeneralSteps.GivenSeveralToDoAreCreated(10) (1.8s)
+When I complete "4" items
+| INFO | Make any 4 items complete |  |
+-> done: GeneralSteps.WhenICompleteItems(4) (2.4s)
+And I select "Active" filter
+| INFO | Change filter to Active |  |
+-> done: GeneralSteps.WhenISelectFilter("Active") (0.1s)
+Then I see only active to do items
+| INFO | Check that only active items are displayed |  |
+-> done: GeneralSteps.ThenISeeOnlyActiveToDoItems() (0.6s)
+When I select "Completed" filter
+| INFO | Change filter to Completed |  |
+-> done: GeneralSteps.WhenISelectFilter("Completed") (0.1s)
+Then I see only completed to do items
+| INFO | Check that only completed items are displayed |  |
+-> done: GeneralSteps.ThenISeeOnlyCompletedToDoItems() (0.5s)
+| INFO | Test scenario finished - Check Filters |  |
+=> AngularJSTest.Tests.SecurityTestsFeature.CheckXSS("<script>alert(\'test1\')</script>",null)
+| INFO | Test scenario started - Check XSS |  |
+When I add new to do item <script>alert('test1')</script>
+| INFO | Adding new to do item <script>alert('test1')</script> |  |
+-> done: GeneralSteps.WhenIAddNewToDoItemAlert("<script>alert('te...") (5.8s)
+Then I shouldn't see alert
+-> done: GeneralSteps.ThenIShouldnTSeeAlert() (0.0s)
+And I see item <script>alert('test1')</script> is created
+| INFO | Checking that to do item '<script>alert('test1')</script>' exists |  |
+-> done: GeneralSteps.ThenISeeItemAlertIsCreated("<script>alert('te...") (0.1s)
+| INFO | Test scenario finished - Check XSS |  |
+=> AngularJSTest.Tests.SecurityTestsFeature.CheckXSS("<img src=\'/img/javascript:alert()\' ...",null)
+| INFO | Test scenario started - Check XSS |  |
+When I add new to do item <img src='/img/javascript:alert()' onerror='javascrip:alert().jpg'>
+| INFO | Adding new to do item <img src='/img/javascript:alert()' onerror='javascrip:alert().jpg'> |  |
+-> done: GeneralSteps.WhenIAddNewToDoItemAlert("<img src='/img/ja...") (0.4s)
+Then I shouldn't see alert
+-> done: GeneralSteps.ThenIShouldnTSeeAlert() (0.0s)
+And I see item <img src='/img/javascript:alert()' onerror='javascrip:alert().jpg'> is created
+| INFO | Checking that to do item '<img src='/img/javascript:alert()' onerror='javascrip:alert().jpg'>' exists |  |
+-> done: GeneralSteps.ThenISeeItemAlertIsCreated("<img src='/img/ja...") (0.1s)
+| INFO | Test scenario finished - Check XSS |  |

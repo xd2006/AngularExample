@@ -7,8 +7,6 @@ namespace AngularJSTest.Service
     using System.Linq;
     using System.Text;
 
-    using NUnit.Framework;
-
     /// <summary>
     /// The service methods.
     /// </summary>
