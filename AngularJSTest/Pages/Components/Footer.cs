@@ -1,9 +1,11 @@
 ﻿
 namespace AngularJSTest.Pages.Components
 {
+    using System;
     using System.Linq;
 
     using OpenQA.Selenium;
+    using OpenQA.Selenium.Support.UI;
 
     /// <summary>
     /// The footer.

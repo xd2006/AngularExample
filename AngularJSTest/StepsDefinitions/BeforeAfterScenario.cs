@@ -1,4 +1,7 @@
 ﻿
+using System.IO;
+using NUnit.Framework;
+
 namespace AngularJSTest.Tests
 {
     using System;
@@ -28,6 +31,8 @@ namespace AngularJSTest.Tests
         [BeforeTestRun]
         public static void BeforeTest()
         {
+            var dir = Path.GetDirectoryName(typeof(BeforeAfterScenario).Assembly.Location);
+            Environment.CurrentDirectory = dir;
             App.Logger.Info("Test run started");
         }
 

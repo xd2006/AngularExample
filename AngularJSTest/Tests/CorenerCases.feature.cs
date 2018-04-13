@@ -99,6 +99,23 @@ testRunner.Then("I see items are displayed", ((string)(null)), table2, "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Add random items")]
+        [NUnit.Framework.CategoryAttribute("Add")]
+        public virtual void AddRandomItems()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add random items", new string[] {
+                        "Add"});
+#line 19
+this.ScenarioSetup(scenarioInfo);
+#line 20
+testRunner.When("I add 3 items", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 21
+testRunner.Then("I see items are displayed", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

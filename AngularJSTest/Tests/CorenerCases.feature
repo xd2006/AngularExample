@@ -13,3 +13,10 @@ Then I see items are displayed
 | !123&$                                                                                      |
 | verry verrry looongggg onneeeee 123234455555 SSS DDDDD some other words up to desired limit |
 | надо что-то делать                                                                          |
+
+
+@Add
+Scenario: Add random items
+When I add 3 items                                                                 
+Then I see items are displayed
+

@@ -1,5 +1,7 @@
 ﻿
 
+using System.IO;
+
 namespace AngularJSTest.StepsDefinitions
 {
     using System;
@@ -56,6 +58,18 @@ namespace AngularJSTest.StepsDefinitions
         }
 
 
+        [When(@"I add (.*) items")]
+        public void WhenIAddNumberofItems(int number)
+        {        
+            List<string> addedItems = new List<string>();
+
+            var itemName = "item name";
+                App.Logger.Info($"Adding new to do item {itemName}");
+                App.Main.AddNewToDoItem(itemName);
+            
+        }
+
+
         /// <summary>
         /// Remove any items and write their name to context variable 'RemovedItemsNames'.
         /// Writes initial items list to context - 'Items'
@@ -103,6 +117,7 @@ namespace AngularJSTest.StepsDefinitions
         [When(@"I rename ""(.*)"" items")]
         public void WhenIRenameAnyItem(int numberOfItems)
         {
+            var dir = Directory.GetCurrentDirectory();
             App.Logger.Info("Renaming any item");
             var renamedItems = App.Main.RenameAnyItems(numberOfItems);
             
@@ -232,6 +247,16 @@ namespace AngularJSTest.StepsDefinitions
                 var items = App.Main.GetActiveToDoItemsNamesList().Where(e => e.Equals(itemName)).ToList();
                 Assert.That(items.Count.Equals(1), $"Item with name {itemName} wasn't created");
             }
+        }
+
+        [Then(@"I see created items are displayed")]
+        public void ThenISeeCreatedItemsAreDisplayed()
+        {         
+                var itemName = "item name";
+                App.Logger.Info($"Checking that to do item '{itemName}' exists");
+                var items = App.Main.GetActiveToDoItemsNamesList().Where(e => e.Equals(itemName)).ToList();
+                Assert.That(items.Count.Equals(1), $"Item with name {itemName} wasn't created");
+            
         }
 
         [Then(@"I see only active to do items")]

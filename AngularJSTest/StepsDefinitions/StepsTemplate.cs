@@ -119,15 +119,15 @@ namespace AngularJSTest.StepsDefinitions
         /// </typeparam>
         public void SetScenarioContextParameter<T>(string parameterName, T parameterValue)
         {
-            try
-            {
-                ScenarioContext.Current.Get<T>(parameterName);
+//            try
+//            {
+//                ScenarioContext.Current.Get<T>(parameterName);
                 ScenarioContext.Current[parameterName] = parameterValue;
-            }
-            catch (Exception e)
-            {
-                ScenarioContext.Current.Add(parameterName, parameterValue);
-            }
+//            }
+//            catch (KeyNotFoundException e)
+//            {
+//                ScenarioContext.Current.Add(parameterName, parameterValue);
+//            }
 
         }
 

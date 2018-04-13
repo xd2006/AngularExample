@@ -1,4 +1,6 @@
 ﻿
+using System.IO;
+
 namespace AngularJSTest.Core.AuxManagers
 {
     using System;
@@ -37,7 +39,8 @@ namespace AngularJSTest.Core.AuxManagers
         /// The hub url.
         /// </param>
         public PageManager(ICapabilities capabilities, string baseUrl, string hubUrl)
-        {
+        {             
+            new WebDriverManager().SetupDriver(capabilities.BrowserName);
             Driver = WebDriverFactory.GetDriver(hubUrl, capabilities);
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
@@ -46,7 +49,7 @@ namespace AngularJSTest.Core.AuxManagers
             {
                 Driver.Navigate().GoToUrl(baseUrl);
             }
-
+           
             this.BaseUrl = baseUrl;
         }
 
