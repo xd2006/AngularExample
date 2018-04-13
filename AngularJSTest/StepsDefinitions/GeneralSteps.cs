@@ -1,6 +1,7 @@
 ﻿
 
 using System.IO;
+using Bogus;
 
 namespace AngularJSTest.StepsDefinitions
 {
@@ -31,7 +32,7 @@ namespace AngularJSTest.StepsDefinitions
         [Given(@"All items are removed")]
         public void GivenAllItemsAreRemoved()
         {
-            App.Logger.Info("Removing all items");           
+            App.Logger.Info("Removing all items");
             App.Main.RemoveAllItems();
         }
 
@@ -54,19 +55,25 @@ namespace AngularJSTest.StepsDefinitions
                 var itemName = row["item name"];
                 App.Logger.Info($"Adding new to do item {itemName}");
                 App.Main.AddNewToDoItem(itemName);
-            }          
+            }
         }
 
 
         [When(@"I add (.*) items")]
-        public void WhenIAddNumberofItems(int number)
-        {        
+        public void WhenIAddNumberofItems(int itemsNumber)
+        {
             List<string> addedItems = new List<string>();
+            var faker = new Faker("en");
 
-            var itemName = "item name";
+            for (int i = 0; i < itemsNumber; i++)
+            {
+                var itemName = i % 2==0 ? faker.Lorem.Word() + faker.Lorem.Slug(): faker.Hacker.Adjective() + " " +faker.Hacker.Noun();
                 App.Logger.Info($"Adding new to do item {itemName}");
                 App.Main.AddNewToDoItem(itemName);
-            
+                addedItems.Add(itemName);
+             }
+            SetScenarioContextParameter("Items", addedItems);
+
         }
 
 
@@ -120,7 +127,7 @@ namespace AngularJSTest.StepsDefinitions
             var dir = Directory.GetCurrentDirectory();
             App.Logger.Info("Renaming any item");
             var renamedItems = App.Main.RenameAnyItems(numberOfItems);
-            
+
             this.SetScenarioContextParameter("RenamedItemsNames", renamedItems);
         }
 
@@ -151,7 +158,7 @@ namespace AngularJSTest.StepsDefinitions
             }
 
             Assert.That(!string.IsNullOrEmpty(errorMessage), "Alert shouldn't be displayed");
-            Assert.That(string.IsNullOrEmpty(alertText));            
+            Assert.That(string.IsNullOrEmpty(alertText));
         }
 
         [Then(@"I see item (.*) is created")]
@@ -161,7 +168,7 @@ namespace AngularJSTest.StepsDefinitions
             var items = App.Main.GetActiveToDoItemsNamesList().Where(e => e.Equals(itemName)).ToList();
             Assert.That(items.Count.Equals(1), $"Item with name {itemName} wasn't created");
         }
-           
+
         /// <summary>
         /// Verify deleted item is not displayed any more.
         /// </summary>
@@ -179,7 +186,7 @@ namespace AngularJSTest.StepsDefinitions
 
             Assert.That(items.SequenceEqual(initialItemsList.Except(removedNames)), "Removed items shouldn't be displayed");
         }
-      
+
 
         [Then(@"I see that items counter displays valid number")]
         public void ThenISeeThatItemsCounterDisplaysValidNumber()
@@ -230,7 +237,7 @@ namespace AngularJSTest.StepsDefinitions
 
             var renamedItems = this.GetScenarioContextParameter<List<Tuple<string, string>>>("RenamedItemsNames");
             var items = App.Main.GetToDoItemsNamesList();
-            
+
             foreach (var item in renamedItems)
             {
                 Assert.That(!items.Contains(item.Item1) && items.Contains(item.Item2), "Only new item should be displayed");
@@ -251,20 +258,23 @@ namespace AngularJSTest.StepsDefinitions
 
         [Then(@"I see created items are displayed")]
         public void ThenISeeCreatedItemsAreDisplayed()
-        {         
-                var itemName = "item name";
+        {
+            var itemsNames = GetScenarioContextParameter<List<string>>("Items");
+            foreach (var itemName in itemsNames)
+            {
                 App.Logger.Info($"Checking that to do item '{itemName}' exists");
                 var items = App.Main.GetActiveToDoItemsNamesList().Where(e => e.Equals(itemName)).ToList();
                 Assert.That(items.Count.Equals(1), $"Item with name {itemName} wasn't created");
-            
+            }
+
         }
 
         [Then(@"I see only active to do items")]
         public void ThenISeeOnlyActiveToDoItems()
         {
-           App.Logger.Info("Check that only active items are displayed");
+            App.Logger.Info("Check that only active items are displayed");
             var allItems = App.Main.GetToDoItemsNamesList();
-            var activeItems = App.Main.GetActiveToDoItemsNamesList(); 
+            var activeItems = App.Main.GetActiveToDoItemsNamesList();
             Assert.AreEqual(allItems, activeItems, "Only active items are displayed");
 
             var initialActiveItems = GetScenarioContextParameter<List<string>>("ActiveItems");
@@ -278,7 +288,7 @@ namespace AngularJSTest.StepsDefinitions
         public void ThenISeeOnlyCompletedToDoItems()
         {
             App.Logger.Info("Check that only completed items are displayed");
-            
+
             var allItems = App.Main.GetToDoItemsNamesList();
             var completedItems = App.Main.GetCompletedToDoItemsNamesList();
             var activeItems = App.Main.GetActiveToDoItemsNamesList();

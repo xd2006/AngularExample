@@ -17,6 +17,6 @@ Then I see items are displayed
 
 @Add
 Scenario: Add random items
-When I add 3 items                                                                 
-Then I see items are displayed
+When I add 15 items                                                                 
+Then I see created items are displayed
 
