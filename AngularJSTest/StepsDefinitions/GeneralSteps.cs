@@ -67,7 +67,7 @@ namespace AngularJSTest.StepsDefinitions
 
             for (int i = 0; i < itemsNumber; i++)
             {
-                var itemName = i % 2==0 ? faker.Lorem.Word() + faker.Lorem.Slug(): faker.Hacker.Adjective() + " " +faker.Hacker.Noun();
+                var itemName = i % 2==0 ? faker.Lorem.Word() + faker.Lorem.Slug(): faker.Hacker.Adjective() + " " + faker.Hacker.Noun();
                 App.Logger.Info($"Adding new to do item {itemName}");
                 App.Main.AddNewToDoItem(itemName);
                 addedItems.Add(itemName);

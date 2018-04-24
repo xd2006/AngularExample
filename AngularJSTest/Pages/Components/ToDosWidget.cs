@@ -1,4 +1,6 @@
 ﻿
+using OpenQA.Selenium.Interactions;
+
 namespace AngularJSTest.Pages.Components
 {
     using System;
@@ -172,7 +174,8 @@ namespace AngularJSTest.Pages.Components
             var toDoItem = this.GetToDos().First(e => e.Name.Equals(oldName));
             Driver.DoubleClick(toDoItem.ParentElement);
             var editField = toDoItem.ParentElement.FindElement(By.XPath(".//input[contains(@class, 'edit')]"));
-            editField.Clear();
+            Actions action = new Actions(Driver);            
+            action.KeyDown(Keys.Control).SendKeys("a").KeyUp(Keys.Control).SendKeys(Keys.Delete).Perform();
             editField.SendKeys(newName + Keys.Enter);           
         }
 

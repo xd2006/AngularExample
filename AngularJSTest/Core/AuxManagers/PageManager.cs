@@ -39,8 +39,12 @@ namespace AngularJSTest.Core.AuxManagers
         /// The hub url.
         /// </param>
         public PageManager(ICapabilities capabilities, string baseUrl, string hubUrl)
-        {             
-            new WebDriverManager().SetupDriver(capabilities.BrowserName);
+        {
+            if  (string.IsNullOrEmpty(hubUrl))
+            {
+                new WebDriverManager().SetupDriver(capabilities.BrowserName);
+            }
+
             Driver = WebDriverFactory.GetDriver(hubUrl, capabilities);
             Driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
             Driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(30);
