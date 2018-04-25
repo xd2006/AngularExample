@@ -1,4 +1,6 @@
-﻿namespace AngularJSTest.Core
+﻿using OpenQA.Selenium;
+
+namespace AngularJSTest.Core
 {
     using System;
     using System.Collections.Specialized;
@@ -29,6 +31,7 @@
             var hubUrl = Environment.GetEnvironmentVariable("HUBURL") ?? appSettings["HubUrl"];
 
             var capabilities = DefineCapabilities(browser);
+      
             var app = new ApplicationManager(capabilities, baseUrl, hubUrl);
             return app;
         }

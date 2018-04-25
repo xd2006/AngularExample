@@ -1,5 +1,8 @@
 ﻿
 using System.IO;
+using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Remote;
+using TechTalk.SpecFlow;
 
 namespace AngularJSTest.Core.AuxManagers
 {
@@ -38,11 +41,18 @@ namespace AngularJSTest.Core.AuxManagers
         /// <param name="hubUrl">
         /// The hub url.
         /// </param>
-        public PageManager(ICapabilities capabilities, string baseUrl, string hubUrl)
+        public PageManager(DesiredCapabilities capabilities, string baseUrl, string hubUrl)
         {
-            if  (string.IsNullOrEmpty(hubUrl))
+            if  (string.IsNullOrEmpty(hubUrl) && capabilities.BrowserName.ToLower()!="microsoftedge")
             {
-                new WebDriverManager().SetupDriver(capabilities.BrowserName);
+                 new WebDriverManager().SetupDriver(capabilities.BrowserName);
+            }
+            else
+            {
+                capabilities.SetCapability("enableVideo", true);
+                capabilities.SetCapability("enableVNC", true);
+//                ScenarioContext.Current.ScenarioInfo.Title
+                //                capabilities.Platform = new Platform(PlatformType.Windows);
             }
 
             Driver = WebDriverFactory.GetDriver(hubUrl, capabilities);

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using OpenQA.Selenium.Edge;
 
 namespace AngularJSTest.Core
 {
@@ -292,6 +293,11 @@ namespace AngularJSTest.Core
             if (browserType == DesiredCapabilities.PhantomJS().BrowserName)
             {
                 return new PhantomJSDriver();
+            }
+
+            if (browserType == DesiredCapabilities.Edge().BrowserName)
+            {
+                return new EdgeDriver();
             }
 
             throw new Exception("Unrecognized browser type: " + browserType);

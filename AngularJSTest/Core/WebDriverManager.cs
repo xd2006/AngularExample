@@ -22,6 +22,11 @@ namespace AngularJSTest.Core
                 case "firefox":
                     config = new FirefoxConfig();
                     break;
+                case "microsoftedge":
+                    config = new EdgeConfig();
+                    break;
+
+
             }
             SetupConfig(config);
         }

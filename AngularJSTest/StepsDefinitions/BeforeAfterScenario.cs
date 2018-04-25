@@ -31,7 +31,8 @@ namespace AngularJSTest.Tests
         [BeforeTestRun]
         public static void BeforeTest()
         {
-            var dir = Path.GetDirectoryName(typeof(BeforeAfterScenario).Assembly.Location);
+            //            var dir = Path.GetDirectoryName(typeof(BeforeAfterScenario).Assembly.Location);
+            var dir = TestContext.CurrentContext.TestDirectory;
             Environment.CurrentDirectory = dir;
             App.Logger.Info("Test run started");
         }
@@ -74,6 +75,8 @@ namespace AngularJSTest.Tests
                     Clean();
                 }
             }
+
+//            Clean();
         }
 
         /// <summary>
